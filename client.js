@@ -146,35 +146,52 @@ function adSelector(){
     localStorage.ads = JSON.stringify(adsArray);
 }
 
+//Finds the right template
+function templateSelector(){
+    adSelector();
+    let adsArray = JSON.parse(localStorage.ads);
+    //As long as there are ads to run then take the first template
+    if(adsArray.length > 0)
+    {
+    var template = adsArray[0].templateUrl;
+    document.location.href = template;
+}
+}
+
+//Displays the current ad in the array of ads
 function adsDisplay(){
     let adsArray = JSON.parse(localStorage.ads);
     var singleAd = adsArray[0];
     adsArray.shift();
     localStorage.ads = JSON.stringify(adsArray);
+    //Prints the text and image to the id in the right template
     printText(singleAd);
-    printImg(singleAd);
-    timeDelay = setTimeout(swift,singleAd.timeDuration*1000);
+    printImage(singleAd);
+    //Timeout to get next Ad
+    timeDelay = setTimeout(defaultTemplate,singleAd.timeDuration*1000);
 }
 
+//Sends the text to id = grid-item1
 function printText(currentAd){
     let display = document.getElementById("grid-item1");
     display.innerText = currentAd.texts.join('');
 }
 
-function printImg(currentAd){
+//Sends the images to printImageDimensions
+function printImage(currentAd){
     for(let imgArr of ads){
         if(!imgArr.name.localeCompare(currentAd.name)){
             if(imgArr.imageUrl.length!=0)    
                 for(let img of imgArr.imageUrl)
-                printImgDimensions(img);
+                printImageDimensions(img);
         }
     }
 }
 
-function printImgDimensions(source){
+//Sends the images to id = grid2
+function printImageDimensions(source){
     var img = document.createElement("img");
     img.src = source;
-    img.style.alignContent = 'bottom';
     img.style.height = 'auto';
     img.style.width = '200px';
     img.style.marginBlock = '20px';
@@ -182,17 +199,8 @@ function printImgDimensions(source){
     display.appendChild(img);
 }
 
-function templateSelector(){
-    adSelector();
-    let ads_array = JSON.parse(localStorage.ads);
-    if(ads_array.length > 0)
-    {
-    var template = ads_array[0].templateUrl;
-    document.location.href = template;
-}
-}
-
-function swift(){
+//Handler - Timerhandler
+function defaultTemplate(){
     let ads_array = JSON.parse(localStorage.ads);
     if(ads_array.length != 0)
         document.location.href = ads_array[0].templateUrl;
