@@ -1,3 +1,6 @@
+// Ofir Gur Cohen - 206588642
+// Roy Ambar - 208789065
+
 class Ad {
   constructor(
     name,
@@ -36,7 +39,7 @@ var ads = [
   new Ad(
     "Ad1",
     "templateA.html",
-    ["Time ", "For ", "Coffee \n", "Elite ", " Coffe"],
+    ["Time For ", "Coffee \n", "Elite ", " Coffe"],
     ["Pics/EliteCoffe_ad2.jpg", "Pics/coffe1_ad2.jpeg"],
     [new Day("monday", 1, 6, 12), new Day("wednesday", 3, 6, 12)],
     [new Date(2022, 1, 1)],
@@ -62,8 +65,8 @@ var ads = [
     ],
     ["Pics/javascript.png"],
     [new Day("tuesday", 2, 10, 16), new Day("wednesday", 3, 10, 16)],
-    [new Date(2022, 4, 1)],
-    [new Date(2022, 5, 31)],
+    [new Date(2022, 3, 1)],
+    [new Date(2022, 4, 30)],
     3,
     [1]
   ),
@@ -74,7 +77,7 @@ var ads = [
     [],
     [],
     [
-      new Day("suday", 0, 8, 22),
+      new Day("sunday", 0, 8, 22),
       new Day("monday", 1, 8, 22),
       new Day("tuesday", 2, 8, 22),
       new Day("wednesday", 3, 8, 22),
@@ -101,15 +104,23 @@ var ads = [
   new Ad(
     "Ad5",
     "templateB.html",
-    ["iphone, ", "ipod, ", "ipad, ", "imac, ", "imouse, ", "ikeyboard."],
+    [
+      "iphone, ",
+      "ipod, ",
+      "ipad, ",
+      "imac, ",
+      "imouse, ",
+      "ikeyboard,",
+      "Ipod Touch",
+    ],
     ["Pics/appleStore_ad5.jpeg", "Pics/apple1_ad5.png"],
     [
       new Day("monday", 1, 1, 23),
       new Day("tuesday", 2, 1, 23),
       new Day("wednesday", 3, 1, 23),
     ],
-    [new Date(2022, 5, 1)],
-    [new Date(2022, 5, 30)],
+    [new Date(2022, 4, 1)],
+    [new Date(2022, 4, 30)],
     3,
     [1, 2, 3]
   ),
