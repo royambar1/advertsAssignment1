@@ -2,9 +2,6 @@ var express = require("express");
 var app = express();
 app.use("/", express.static('./public/'));
 
-// app.use(express.static("public"));
-// app.use(express.json());
-
 class Ad {
     constructor(
       name,
@@ -45,7 +42,8 @@ class Ad {
       "templateA.html",
       ["Time For ", "Coffee \n", "Elite ", " Coffe"],
       ["Pics/EliteCoffe_ad2.jpg", "Pics/coffe1_ad2.jpeg"],
-      [new Day("friday", 5, 8, 22),new Day("monday", 1, 6, 12), new Day("wednesday", 3, 6, 12)],
+      [new Day("friday", 5, 8, 22),new Day("monday", 1, 6, 12), new Day("saturday", 6, 8, 22),
+      new Day("wednesday", 3, 6, 12)],
       [new Date(2022, 1, 1)],
       [new Date(2022, 12, 31)],
       3,
@@ -68,7 +66,8 @@ class Ad {
         "Now",
       ],
       ["Pics/javascript.png"],
-      [new Day("friday", 5, 8, 22),new Day("tuesday", 2, 10, 16), new Day("wednesday", 3, 10, 16)],
+      [new Day("friday", 5, 8, 22),new Day("saturday", 6, 8, 22),
+      new Day("tuesday", 2, 10, 16), new Day("wednesday", 3, 10, 16)],
       [new Date(2022, 3, 1)],
       [new Date(2022, 4, 30)],
       3,
@@ -137,6 +136,18 @@ class Ad {
   });
   
   app.get("/", function (request, response) {
+    response.sendFile(__dirname + "/public/main.html");
+  });
+
+  app.get("/screen=1", function (request, response) {
+    response.sendFile(__dirname + "/public/main.html");
+  });
+
+  app.get("/screen=2", function (request, response) {
+    response.sendFile(__dirname + "/public/main.html");
+  });
+
+  app.get("/screen=3", function (request, response) {
     response.sendFile(__dirname + "/public/main.html");
   });
   

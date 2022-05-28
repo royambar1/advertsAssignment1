@@ -1,4 +1,6 @@
 
+let ads = [];
+var screenNum = 0;
 //Array of current Time
 function Currenttime() {
   var dateNow = new Date();
@@ -10,16 +12,37 @@ function Currenttime() {
   return [hour, dayInAWeek, dateInMonth, month, year];
 }
 
-let ads = [];
+function getScreenNum() {
+  screenNum = window.location.pathname;
+  if(screenNum.length > 1){
+  let screenRes = screenNum.split('=');
+  screenNum = parseInt(screenRes.pop());
+  }
+}
+
 
 function getAds(){
   $(function(){
     $.get("screen", function(data, status){
       ads = data;
+      getScreenNum();
       adSelector();
-      adsDisplay();
+      firstAd()
     });
   });
+}
+
+function checkForScreens(Adsarray){
+  let adsScreenCheck = [];
+  Adsarray.forEach(ad => {
+    for(var i=0; i < ad.screens.length;i++)
+    {
+      if(ad.screens[i] == screenNum){
+          adsScreenCheck.push(ad);
+      }
+    }
+  });
+  return adsScreenCheck;
 }
 
 //Collects all relevant ads to run now into an array
@@ -57,6 +80,7 @@ function adSelector() {
       }
     }
   }
+  adsArray = checkForScreens(adsArray);
   console.log("num of advs = " + adsArray.length);
   localStorage.ads = JSON.stringify(adsArray);
 }
@@ -64,6 +88,12 @@ function adSelector() {
 //Finds the right template
 function templateSelector() {
   getAds();
+}
+
+function firstAd(){
+  let adsArray = JSON.parse(localStorage.ads);
+  var singleAd = adsArray[0];
+  document.location.href = singleAd.templateUrl;
 }
 
 //Displays the current ad in the array of ads
