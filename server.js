@@ -1,3 +1,6 @@
+// <!-- Roy Ambar - 208789065
+// Ofir Gur Cohen - 206588642 -->
+
 var express = require("express");
 var app = express();
 app.use("/", express.static('./public/'));
@@ -42,12 +45,13 @@ class Ad {
       "templateA.html",
       ["Time For ", "Coffee \n", "Elite ", " Coffe"],
       ["Pics/EliteCoffe_ad2.jpg", "Pics/coffe1_ad2.jpeg"],
-      [new Day("friday", 5, 8, 22),new Day("monday", 1, 6, 12), new Day("saturday", 6, 8, 22),
-      new Day("wednesday", 3, 6, 12)],
+      [
+      new Day("monday", 1, 6, 12),
+      new Day("wednesday", 3, 13, 20)],
       [new Date(2022, 1, 1)],
       [new Date(2022, 12, 31)],
       3,
-      [2, 3]
+      [1, 2]
     ),
   
     new Ad(
@@ -66,12 +70,13 @@ class Ad {
         "Now",
       ],
       ["Pics/javascript.png"],
-      [new Day("friday", 5, 8, 22),new Day("saturday", 6, 8, 22),
-      new Day("tuesday", 2, 10, 16), new Day("wednesday", 3, 10, 16)],
+      [
+      new Day("tuesday", 2, 10, 16), 
+      new Day("wednesday", 3, 10, 16)],
       [new Date(2022, 3, 1)],
       [new Date(2022, 4, 30)],
       3,
-      [1]
+      [1,3]
     ),
   
     new Ad(
@@ -91,19 +96,19 @@ class Ad {
       [new Date(2022, 5, 1)],
       [new Date(2022, 6, 15)],
       3,
-      [3]
+      [2,3]
     ),
     new Ad(
       "Ad4",
       "templateA.html",
       ["Roy Ambar\n", "Ofir Gur Cohen"],
       [],
-      [new Day("friday", 5, 8, 22),
+      [
       new Day("monday", 1, 15, 19)],
       [new Date(2022, 3, 29)],
       [new Date(2022, 4, 15)],
       3,
-      [1, 2, 3]
+      [1]
     ),
     new Ad(
       "Ad5",
@@ -121,8 +126,7 @@ class Ad {
       [
         new Day("monday", 1, 1, 23),
         new Day("tuesday", 2, 1, 23),
-        new Day("wednesday", 3, 1, 23),
-        new Day("friday", 5, 8, 22),
+        new Day("wednesday", 3, 1, 23)
       ],
       [new Date(2022, 4, 1)],
       [new Date(2022, 4, 30)],
@@ -151,4 +155,4 @@ class Ad {
     response.sendFile(__dirname + "/public/main.html");
   });
   
-  app.listen(7000);
+  app.listen(8080);

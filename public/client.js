@@ -1,5 +1,7 @@
+// <!-- Roy Ambar - 208789065
+// Ofir Gur Cohen - 206588642 -->
 
-let ads = [];
+let ads = [];s
 var screenNum = 0;
 //Array of current Time
 function Currenttime() {
@@ -80,7 +82,9 @@ function adSelector() {
       }
     }
   }
-  adsArray = checkForScreens(adsArray);
+  if(screenNum > 0 && screenNum < 4)
+  {  adsArray = checkForScreens(adsArray);
+  }
   console.log("num of advs = " + adsArray.length);
   localStorage.ads = JSON.stringify(adsArray);
 }
